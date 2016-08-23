@@ -1,0 +1,4 @@
+[submodule "returnn"]
+	path = returnn
+	url = https://github.com/rwth-i6/returnn.git
+	branch = master
