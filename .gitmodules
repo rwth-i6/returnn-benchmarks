@@ -2,3 +2,6 @@
 	path = returnn
 	url = https://github.com/rwth-i6/returnn.git
 	branch = master
+[submodule "keras"]
+	path = keras
+	url = https://github.com/fchollet/keras.git
