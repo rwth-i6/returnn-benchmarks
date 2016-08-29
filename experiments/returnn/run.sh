@@ -10,5 +10,5 @@ test -e "$config" || {
 source theano-cuda-activate.sh
 
 mydir=$(dirname $0)
-$mydir/returnn/rnn.py $config
-
+set -x
+$mydir/returnn/rnn.py $config ${@:2}
