@@ -69,6 +69,7 @@ assert numpy.array_equal(X_train[0], data.get_data(0))  # reshaping correct?
 y_train = numpy.array(data.hdf["targets/data/classes"], dtype="int32")
 y_train = y_train.reshape((data.num_seqs, seq_len))
 assert numpy.array_equal(y_train[0], data.get_targets(0))  # reshaping correct?
+y_train = numpy.where((0 <= y_train) * (y_train < output_dim), y_train, 0)  # fix some broken indices?
 y_train = numpy.expand_dims(y_train, -1)  # needed for sparse_categorical_crossentropy
 
 
@@ -79,7 +80,7 @@ model.add(Bidirectional(LSTM(512, return_sequences=True)))
 model.add(TimeDistributed(Dense(output_dim=output_dim)))
 model.add(TimeDistributed(Activation('softmax')))
 
-# try using different optimizers and different optimizer configs
+# Note that sparse_categorical_crossentropy could be faster: https://github.com/fchollet/keras/issues/3649
 model.compile('adam', 'sparse_categorical_crossentropy', metrics=['accuracy'])
 
 print('Train...')
