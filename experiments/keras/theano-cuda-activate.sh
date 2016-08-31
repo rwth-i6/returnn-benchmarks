@@ -16,7 +16,7 @@ export CPATH=$CUDNN_PATH:$CPATH
 export LIBRARY_PATH=$CUDNN_PATH:$LIBRARY_PATH
 
 export THEANO_FLAGS="device=gpu,force_device=True"
-export THEANO_FLAGS="base_compiledir=/var/tmp/$LOGNAME/theano/,compiledir_format=compiledir_%(platform)s-%(processor)s-%(python_version)s-%(python_bitwidth)s--gpu"
+export THEANO_FLAGS="$THEANO_FLAGS,base_compiledir=/var/tmp/$LOGNAME/theano/,compiledir_format=compiledir_%(platform)s-%(processor)s-%(python_version)s-%(python_bitwidth)s--gpu"
 export THEANO_FLAGS="$THEANO_FLAGS,lib.cnmem=1"
 
 # For profiling:
