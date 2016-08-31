@@ -1,12 +1,10 @@
 
 # Needed for Theano.
 # Prefer CUDA 7.0 if available. Needed for new GPUs.
-# If Sprint also uses CUDA in the same proc, it needs to use the same CUDA version!
-# See https://groups.google.com/forum/#!topic/theano-users/Pu4YKlZKwm4
 source /u/zeyer/py-envs/py2-theano-new/bin/activate
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/atlas-base/
 
-export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH  # also needed for sprint
+export LD_LIBRARY_PATH=/usr/local/cuda-7.0/lib64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-6.5.19/lib64:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-7.0/bin:$PATH
 export PATH=/usr/local/cuda-6.5.19/bin:$PATH
