@@ -11,6 +11,9 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Embedding, LSTM, Input, Bidirectional
 from keras.datasets import imdb
 
+import better_exchook
+better_exchook.install()
+
 
 
 max_features = 20000
@@ -25,15 +28,16 @@ print(len(X_test), 'test sequences')
 print("Pad sequences (samples x time)")
 X_train = sequence.pad_sequences(X_train, maxlen=maxlen)
 X_test = sequence.pad_sequences(X_test, maxlen=maxlen)
-print('X_train shape:', X_train.shape)
+print('X_train shape:', X_train.shape, ', y_train shape:', y_train.shape)
 print('X_test shape:', X_test.shape)
 y_train = np.array(y_train)
 y_test = np.array(y_test)
 
 model = Sequential()
 model.add(Embedding(max_features, 128, input_length=maxlen))
-model.add(Bidirectional(LSTM(64)))
-model.add(Dropout(0.5))
+model.add(Bidirectional(LSTM(512, return_sequences=True)))
+model.add(Bidirectional(LSTM(512, return_sequences=True)))
+model.add(Bidirectional(LSTM(512)))
 model.add(Dense(1, activation='sigmoid'))
 
 # try using different optimizers and different optimizer configs
