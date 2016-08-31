@@ -15,7 +15,9 @@ export LD_LIBRARY_PATH=$CUDNN_PATH:$LD_LIBRARY_PATH
 export CPATH=$CUDNN_PATH:$CPATH
 export LIBRARY_PATH=$CUDNN_PATH:$LIBRARY_PATH
 
-#export THEANO_FLAGS="device=gpu,force_device=True"
+# No device=gpu in THEANO_FLAGS.
+# RETURNN will spawn a subprocess and automatically set that,
+# depending on your RETURNN config (if you have device=gpu in there).
 export THEANO_FLAGS="base_compiledir=/var/tmp/$LOGNAME/theano/,compiledir_format=compiledir_%(platform)s-%(processor)s-%(python_version)s-%(python_bitwidth)s--gpu"
 export THEANO_FLAGS="$THEANO_FLAGS,lib.cnmem=1"
 
