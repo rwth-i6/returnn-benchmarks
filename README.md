@@ -23,7 +23,7 @@ All experiments available to reproduce using run scripts or corresponding config
 | RETURNN    | BLSTM | 599 sec |
 | Torch7 + cudnn | LSTM      |  156 sec|
 | Torch7 + cudnn | BLSTM      |   389 sec |
-| Keras [Theano] | LSTM  |   wip |
-| Keras [Theano] | BLSTM  |   wip |
+| Keras [Theano] | LSTM  |   1068 sec |
+| Keras [Theano] | BLSTM  |  2167 sec |
 | TensorFlow     | LSTM   | wip |
 | TensorFlow     | BLSTM  | wip |
