@@ -86,6 +86,6 @@ model.compile('adam', 'sparse_categorical_crossentropy', metrics=['accuracy'])
 print('Train...')
 model.fit(
 	X_train, y_train,
-	batch_size=32,
-	nb_epoch=4)
+	batch_size=81,
+	nb_epoch=10)
 

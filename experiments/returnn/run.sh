@@ -7,7 +7,7 @@ test -e "$config" || {
 	exit 1
 }
 
-source theano-cuda-activate.sh
+#source theano-cuda-activate.sh
 
 mydir=$(dirname $0)
 set -x

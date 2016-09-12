@@ -1,0 +1,12 @@
+epoch 0, Minibatch Loss= 5840.603823, Training Accuracy= 165.75407, Time Elapsed= -709.66335797
+epoch 1, Minibatch Loss= 5754.957261, Training Accuracy= 167.63570, Time Elapsed= -701.86665893
+epoch 2, Minibatch Loss= 5750.247181, Training Accuracy= 167.98977, Time Elapsed= -701.245924
+epoch 3, Minibatch Loss= 5747.858321, Training Accuracy= 168.21037, Time Elapsed= -695.57787991
+epoch 4, Minibatch Loss= 6350.983937, Training Accuracy= 168.48000, Time Elapsed= -694.28754902
+epoch 5, Minibatch Loss= 5750.718816, Training Accuracy= 169.51437, Time Elapsed= -693.97551799
+epoch 6, Minibatch Loss= 5748.536614, Training Accuracy= 170.82089, Time Elapsed= -694.39909387
+epoch 7, Minibatch Loss= 5747.283677, Training Accuracy= 171.16355, Time Elapsed= -693.88838005
+epoch 8, Minibatch Loss= 5746.587573, Training Accuracy= 171.74074, Time Elapsed= -694.12147593
+epoch 9, Minibatch Loss= 5745.959662, Training Accuracy= 172.86992, Time Elapsed= -693.83952689
+Optimization Finished!
+Elapsed: 6943

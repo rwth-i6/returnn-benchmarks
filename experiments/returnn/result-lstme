@@ -1,0 +1,90 @@
+THEANO_FLAGS=openmp=True,floatX=float32,allow_gc=True,nvcc.fastmath=True,lib.cnmem=0.5 ./run.sh elstm.3l.config
++ ./returnn/rnn.py elstm.3l.config
+/home/creon/venv/local/lib/python2.7/site-packages/Theano-0.9.0.dev2-py2.7.egg/theano/tensor/signal/downsample.py:6: UserWarning: downsample module has been moved to the theano.tensor.signal.pool module.
+  "downsample module has been moved to the theano.tensor.signal.pool module.")
+CRNN starting up, version 20160831.221359--git-764402f-dirty, pid 25537
+Theano: 0.9.0dev2.dev-32b8ed... (<site-package> in /home/creon/venv/local/lib/python2.7/site-packages/Theano-0.9.0.dev2-py2.7.egg/theano)
+Using gpu device 0: GeForce GTX 1080 (CNMeM is enabled with initial size: 50.0% of memory, cuDNN 5105)
+/home/creon/venv/local/lib/python2.7/site-packages/Theano-0.9.0.dev2-py2.7.egg/theano/tensor/signal/downsample.py:6: UserWarning: downsample module has been moved to the theano.tensor.signal.pool module.
+  "downsample module has been moved to the theano.tensor.signal.pool module.")
+Device gpu0 proc starting up, pid 25555
+Device gpu0 proc: THEANO_FLAGS = 'allow_gc=True,compiledir_format=compiledir_%(platform)s-%(processor)s-%(python_version)s-%(python_bitwidth)s--dev-gpu0,device=gpu0,floatX=float32,force_device=True,lib.cnmem=0.5,nvcc.fastmath=True,openmp=True'
+Device train-network: Used data keys: ['classes', 'data']
+using gradient clipping 10.000000                                                                                                                                                                                                                             
+/home/creon/crnn/Device.py:452: UserWarning: theano.function was asked to create a function computing outputs given certain inputs, but the provided input variable at index 7 is not part of the computational graph needed to compute the outputs: tags_var.
+To make this warning into an error, you can pass the parameter on_unused_input='raise' to theano.function. To disable it completely, use on_unused_input='ignore'.
+  name="train_and_updater")
+/home/creon/crnn/Device.py:476: UserWarning: theano.function was asked to create a function computing outputs given certain inputs, but the provided input variable at index 6 is not part of the computational graph needed to compute the outputs: epoch_var.
+To make this warning into an error, you can pass the parameter on_unused_input='raise' to theano.function. To disable it completely, use on_unused_input='ignore'.
+  name="tester")
+/home/creon/crnn/Device.py:476: UserWarning: theano.function was asked to create a function computing outputs given certain inputs, but the provided input variable at index 7 is not part of the computational graph needed to compute the outputs: tags_var.
+To make this warning into an error, you can pass the parameter on_unused_input='raise' to theano.function. To disable it completely, use on_unused_input='ignore'.
+  name="tester")
+Device gpu0 proc, pid 25555 is ready for commands.
+Devices: Used in multiprocessing mode.
+loading file data/train.0001
+cached 27297 seqs 1.19484867901 GB (fully loaded, 340.138484654 GB left over)
+Train data:
+  input: 45 x 1
+  output: {u'classes': [1501, 1], 'data': [45, 2]}
+  HDF dataset, sequences: 27297, frames: 6824250
+Devices:
+  gpu0: GeForce GTX 1080 (units: 1000 clock: 1.00Ghz memory: 2.0GB) working on 1 batch (update on device)
+Learning-rate-control: loading file newbob.data
+using gradient clipping 10.000000
+Network layer topology:
+  input #: 45
+  hidden rec 'lstm0_bw' #: 512
+  hidden rec 'lstm0_fw' #: 512
+  hidden rec 'lstm1_bw' #: 512
+  hidden rec 'lstm1_fw' #: 512
+  hidden rec 'lstm2_bw' #: 512
+  hidden rec 'lstm2_fw' #: 512
+  output softmax 'output' #: 1501
+net params #: 16415197
+net trainable params: [W_in_data_lstm0_bw, W_re_lstm0_bw, b_lstm0_bw, W_in_data_lstm0_fw, W_re_lstm0_fw, b_lstm0_fw, W_in_lstm0_bw_lstm1_bw, W_in_lstm0_fw_lstm1_bw, W_re_lstm1_bw, b_lstm1_bw, W_in_lstm0_bw_lstm1_fw, W_in_lstm0_fw_lstm1_fw, W_re_lstm1_fw, b_lstm1_fw, W_in_lstm1_bw_lstm2_bw, W_in_lstm1_fw_lstm2_bw, W_re_lstm2_bw, b_lstm2_bw, W_in_lstm1_bw_lstm2_fw, W_in_lstm1_fw_lstm2_fw, W_re_lstm2_fw, b_lstm2_fw, W_in_lstm2_bw_output, W_in_lstm2_fw_output, b_output]
+start training at epoch 1 and batch 0
+using batch size: 20250, max seqs: 81
+learning rate control: ConstantLearningRate(defaultLearningRate=0.001, minLearningRate=0.0, defaultLearningRates=[
+], errorMeasureKey=None, relativeErrorAlsoRelativeToLearningRate=False, filename='newbob.data'), epoch data: 1: EpochData(learningRate=0.001, error={'train_score': 2.3945065128493974}), 2: EpochData(learningRate=0.001, error={'train_score': 1.3025901163589406}), 3: EpochData(learningRate=0.001, error={'train_score': 1.0437951776694785}), 4: EpochData(learningRate=0.001, error={'train_score': 0.8941967224820951}), 5: EpochData(learningRate=0.001, error={'train_score': 0.7700534207628128}), 6: EpochData(learningRate=0.001, error={'train_score': 0.658652374803092}), 7: EpochData(learningRate=0.001, error={'train_score': 0.6464216102616589}), 8: EpochData(learningRate=0.001, error={'train_score': 0.554717104615434}), 9: EpochData(learningRate=0.001, error={'train_score': 0.43205401070000826}), 10: EpochData(learningRate=0.001, error={'train_score': 0.34658982922516673}), 11: EpochData(learningRate=0.001, error={'train_score': 0.28316676519226014}), 12: EpochData(learningRate=0.001, error={'train_score': 0.2341505188084428}), 13: EpochData(learningRate=0.001, error={'train_score': 0.1973889058464529}), 14: EpochData(learningRate=0.001, error={'train_score': 0.5037290564425005}), 15: EpochData(learningRate=0.001, error={'train_score': 0.3222515329602097}), 16: EpochData(learningRate=0.001, error={'train_score': 0.23661826562900687}), 17: EpochData(learningRate=0.001, error={'train_score': 0.18118038784918272})
+pretrain: None
+start epoch 1 with learning rate 0.001 ...
+0:00:01 [|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| 99.71% ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ]Device gpu0 proc epoch time stats: total 0:06:05, 98.26% computing, 0.12% updating data
+Save model from epoch 1 under model/network.001                                                                                                                                                                                                               
+epoch 1 score: 2.36934039083 elapsed: 0:06:05  
+start epoch 2 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:08, 98.48% computing, 0.12% updating data                                                                                                                                                                       
+Save model from epoch 2 under model/network.002                                                                                                                                                                                                               
+epoch 2 score: 1.83019668771 elapsed: 0:06:08  
+start epoch 3 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:07, 98.28% computing, 0.13% updating data                                                                                                                                                                       
+Save model from epoch 3 under model/network.003                                                                                                                                                                                                               
+epoch 3 score: 1.08446689769 elapsed: 0:06:07  
+start epoch 4 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:08, 98.26% computing, 0.13% updating data                                                                                                                                                                       
+Save model from epoch 4 under model/network.004                                                                                                                                                                                                               
+epoch 4 score: 0.915214446499 elapsed: 0:06:08  
+start epoch 5 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:07, 98.45% computing, 0.12% updating data                                                                                                                                                                       
+Save model from epoch 5 under model/network.005                                                                                                                                                                                                               
+epoch 5 score: 0.788052630555 elapsed: 0:06:07  
+start epoch 6 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:09, 98.46% computing, 0.12% updating data                                                                                                                                                                       
+Save model from epoch 6 under model/network.006                                                                                                                                                                                                               
+epoch 6 score: 0.678079746773 elapsed: 0:06:09  
+start epoch 7 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:05, 98.48% computing, 0.12% updating data                                                                                                                                                                       
+Save model from epoch 7 under model/network.007                                                                                                                                                                                                               
+epoch 7 score: 0.574550355951 elapsed: 0:06:05  
+start epoch 8 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:07, 98.21% computing, 0.12% updating data                                                                                                                                                                       
+Save model from epoch 8 under model/network.008                                                                                                                                                                                                               
+epoch 8 score: 0.484789392994 elapsed: 0:06:07  
+start epoch 9 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:06, 98.49% computing, 0.11% updating data                                                                                                                                                                       
+Save model from epoch 9 under model/network.009                                                                                                                                                                                                               
+epoch 9 score: 0.457368258975 elapsed: 0:06:06  
+start epoch 10 with learning rate 0.001 ...
+Device gpu0 proc epoch time stats: total 0:06:05, 98.50% computing, 0.12% updating data                                                                                                                                                                       
+Save model from epoch 10 under model/network.010                                                                                                                                                                                                              
+epoch 10 score: 0.411159050932 elapsed: 0:06:06

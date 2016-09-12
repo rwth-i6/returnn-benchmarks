@@ -1,0 +1,29 @@
+THEANO_FLAGS=device=gpu2,openmp=False,floatX=float32,allow_gc=True,nvcc.fastmath=True,lib.cnmem=0.5 ./run.sh 
+Using Theano backend.
+Using gpu device 2: GeForce GTX 1080 (CNMeM is enabled with initial size: 50.0% of memory, cuDNN 5105)
+Loading data...
+Num sequences: 27297
+Sequence length: 250
+Input data dimension: 45
+Output data number of labels: 1501
+Train...
+Epoch 1/10
+27297/27297 [==============================] - 601s - loss: 1.9857 - acc: 0.5611         
+Epoch 2/10
+27297/27297 [==============================] - 602s - loss: 1.1962 - acc: 0.6798     
+Epoch 3/10
+27297/27297 [==============================] - 620s - loss: 1.0034 - acc: 0.7194     
+Epoch 4/10
+27297/27297 [==============================] - 647s - loss: 0.8642 - acc: 0.7494     
+Epoch 5/10
+27297/27297 [==============================] - 710s - loss: 0.7489 - acc: 0.7754     
+Epoch 6/10
+27297/27297 [==============================] - 711s - loss: 0.6475 - acc: 0.7996     
+Epoch 7/10
+27297/27297 [==============================] - 619s - loss: 0.5593 - acc: 0.8218     
+Epoch 8/10
+27297/27297 [==============================] - 629s - loss: 0.4811 - acc: 0.8424     
+Epoch 9/10
+27297/27297 [==============================] - 629s - loss: 0.4196 - acc: 0.8592     
+Epoch 10/10
+27297/27297 [==============================] - 631s - loss: 0.3659 - acc: 0.8745 

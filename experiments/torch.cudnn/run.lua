@@ -49,8 +49,8 @@ function main()
 				num_layers = 3,
 				class_dim = 1501,
 				learningRate = 0.001,
-				batch_size = 27,
-				num_batches = 1011,
+				batch_size = 81,
+				num_batches = 337,
 				cudnn = 1
 			}
 	config={
@@ -58,7 +58,7 @@ function main()
    		--momentum = 0.9
 		}		
 
-	
+  cutorch.setDevice(1)
 	local xs, ys, size = load_chime(arg[1], options)
 	local model = create_model(options)
 
