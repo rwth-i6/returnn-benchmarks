@@ -73,6 +73,17 @@ y_train = numpy.where((0 <= y_train) * (y_train < output_dim), y_train, 0)  # fi
 y_train = numpy.expand_dims(y_train, -1)  # needed for sparse_categorical_crossentropy
 
 
+data = SimpleHdf("data/train.0001")
+X_valid = numpy.array(data.hdf["inputs"], dtype="float32")
+X_valid = X_train.reshape((data.num_seqs, seq_len, input_dim))
+assert numpy.array_equal(X_valid[0], data.get_data(0))  # reshaping correct?
+
+y_valid = numpy.array(data.hdf["targets/data/classes"], dtype="int32")
+y_valid = y_valid.reshape((data.num_seqs, seq_len))
+assert numpy.array_equal(y_valid[0], data.get_targets(0))  # reshaping correct?
+y_valid = numpy.where((0 <= y_valid) * (y_valid < output_dim), y_valid, 0)  # fix some broken indices?
+y_valid = numpy.expand_dims(y_valid, -1)  # needed for sparse_categorical_crossentropy
+
 model = Sequential()
 model.add(Bidirectional(LSTM(512, return_sequences=True), batch_input_shape=(None, None, input_dim)))
 model.add(Bidirectional(LSTM(512, return_sequences=True)))
@@ -82,10 +93,11 @@ model.add(TimeDistributed(Activation('softmax')))
 
 # Note that sparse_categorical_crossentropy could be faster: https://github.com/fchollet/keras/issues/3649
 model.compile('adam', 'sparse_categorical_crossentropy', metrics=['accuracy'])
-
 print('Train...')
 model.fit(
 	X_train, y_train,
-	batch_size=81,
-	nb_epoch=10)
+	batch_size=27,
+	nb_epoch=1)
+
+model.evaluate(X_valid,y_valid,batch_size=27)
 

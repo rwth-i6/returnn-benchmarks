@@ -65,6 +65,7 @@ class HDF5DATA(object):
     return self.batches[self.batch_idx-1]
 
 train = HDF5DATA('data/train.0001')
+valid = HDF5DATA('data/train.0002')
 
 # Parameters
 learning_rate = 0.001
@@ -160,6 +161,18 @@ with tf.device('/gpu:0'):
                       "{:.5f}".format(acc) + ", Time Elapsed= " + str(et-time.time()))
                 acc = 0
                 loss = 0
+                while batch_x is not None:
+                    batch_y = batch_y.reshape((batch_y.shape[0]*batch_y.shape[1],batch_y.shape[2]))
+                    # Calculate batch accuracy
+                    acc += sess.run(accuracy, feed_dict={x: batch_x, y: batch_y})
+                    # Calculate batch loss
+                    loss += sess.run(cost, feed_dict={x: batch_x, y: batch_y})
+                    batch_x, batch_y, _, _ = valid.next_batch()
+                print("epoch " + str(epoch) + ", Minibatch Loss= " + \
+                      "{:.6f}".format(loss) + ", Validation Accuracy= " + \
+                      "{:.5f}".format(acc))
+                acc = 0
+                loss = 0
                 epoch += 1
                 et = time.time()
                 continue
@@ -177,9 +190,10 @@ with tf.device('/gpu:0'):
             sess.run(optimizer, feed_dict={x: batch_x, y: batch_y})
         print("Optimization Finished!")
     print("Elapsed: %d" % (time.time()-st))
+
     # Calculate accuracy for 128 mnist test images
     #test_len = 128
     #test_data = mnist.test.images[:test_len].reshape((-1, n_steps, n_input))
     #test_label = mnist.test.labels[:test_len]
-    #print("Testing Accuracy:", \
-    #    sess.run(accuracy, feed_dict={x: test_data, y: test_label}))
+    print("Testing Accuracy:", \
+          sess.run(accuracy, feed_dict={x: test_data, y: test_label}))
